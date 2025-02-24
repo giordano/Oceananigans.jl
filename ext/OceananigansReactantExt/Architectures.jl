@@ -11,19 +11,19 @@ const ReactantKernelAbstractionsExt = Base.get_extension(
 const ReactantBackend = ReactantKernelAbstractionsExt.ReactantBackend
 device(::ReactantState) = ReactantBackend()
 
-architecture(::Reactant.AnyConcreteRArray) = ReactantState
+architecture(::Reactant.AnyConcretePJRTArray) = ReactantState
 architecture(::Reactant.AnyTracedRArray) = ReactantState
 
 array_type(::ReactantState) = ConcreteRArray
 
 on_architecture(::ReactantState, a::Array) = ConcreteRArray(a)
-on_architecture(::ReactantState, a::Reactant.AnyConcreteRArray) = a
+on_architecture(::ReactantState, a::Reactant.AnyConcretePJRTArray) = a
 on_architecture(::ReactantState, a::Reactant.AnyTracedRArray) = a
-on_architecture(::ReactantState, a::BitArray) = ConcreteRArray(a)
-on_architecture(::ReactantState, a::SubArray{<:Any, <:Any, <:Array}) = ConcreteRArray(a)
+on_architecture(::ReactantState, a::BitArray) = ConcretePJRTArray(a)
+on_architecture(::ReactantState, a::SubArray{<:Any, <:Any, <:Array}) = ConcretePJRTArray(a)
 
 unified_array(::ReactantState, a) = a
 
-@inline device_copy_to!(dst::Reactant.AnyConcreteRArray, src::Reactant.AnyConcreteRArray; kw...) = Base.copyto!(dst, src)
+@inline device_copy_to!(dst::Reactant.AnyConcretePJRTArray, src::Reactant.AnyConcretePJRTArray; kw...) = Base.copyto!(dst, src)
 
 end # module
