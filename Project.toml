@@ -59,7 +59,7 @@ OceananigansOneAPIExt = "oneAPI"
 OceananigansReactantExt = ["Reactant", "KernelAbstractions", "ConstructionBase"]
 
 [compat]
-AMDGPU = "1.2.7"
+AMDGPU = "1.2.7, 2"
 Adapt = "4.1.1"
 CUDA = "5.7"
 ConstructionBase = "1"
